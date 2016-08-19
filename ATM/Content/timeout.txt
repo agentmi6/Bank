@@ -1,0 +1,14 @@
+﻿
+    section scripts{
+        <script type="text/javascript">
+            $("#cashOut").click(function () {
+                $("#msg_success").show();
+                setTimeout(function () {
+                    window.location.href = '@Url.Action("Index", "Home")';
+                }, 2500);
+            });
+            window.setTimeout(function () {
+            window.location.href = '@Url.Action("Index", "Home")';
+        }, 2500);
+        </script>
+    }

@@ -1,0 +1,66 @@
+﻿@model ATM.Models.CheckingAccount
+
+@using ATM.Models;
+
+
+
+@if (User.Identity.IsAuthenticated)
+{
+
+
+   
+
+    <div class="row">
+        <div class="col-md-6 margin-top-20">
+            <a href="@Url.Action("Withdrawal","Transactions")" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-circle-arrow-down"></span>
+                Withdrawal
+            </a>
+            <a href="@Url.Action("QuickCash","Transactions", new { checkingAccountId = ViewBag.CheckingAccountId })" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-flash"></span>
+                Quick Cash $100
+            </a>
+            <a href="@Url.Action("Details","CheckingAccount", new { checkingAccountId = ViewBag.CheckingAccountId })" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-question-sign"></span>
+                Balance Inquiry
+            </a>
+
+        </div>
+
+        <div class="col-md-6 margin-top-20">
+            <a href="@Url.Action("PrintStatement","Transactions")" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-print"></span>
+                Print Statement
+            </a>
+            <a href="@Url.Action("TransferFunds","Transactions", new { checkingAccountId = ViewBag.CheckingAccountId })" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-transfer"></span>
+                Transfer Funds
+            </a>
+            <a href="@Url.Action("Deposit","Transactions")" class="btn btn-primary btn-lg btn-block">
+                <span class="glyphicon glyphicon-circle-arrow-up"></span>
+                Deposit
+            </a>
+        </div>
+
+        <div class="col-md-6 margin-top-20"></div>
+    </div>
+}
+else
+{
+    <div>
+        <div class="well">
+            <h2>Welcome to MVC Bank</h2>
+            <h4>Register for a new account and you can make:</h4>
+            <ul>
+                <li>Deposits</li>
+                <li>Withdrawals</li>
+                <li>Check your balance</li>
+            </ul>
+            <p>and more...</p>
+        </div>
+    </div>
+}
+
+
+
+

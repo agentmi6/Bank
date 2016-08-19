@@ -1,0 +1,49 @@
+﻿@model ATM.Models.qCash
+
+@{
+    ViewBag.Title = "QuickCash";
+}
+
+
+<div class="row">
+    <h2><b>Quick Cash for $100 </b></h2>
+
+
+    <h3>In order to make a quck cash transaction your balance need to be at least $100 or more</h3>
+
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuickCash, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.QuickCash)
+                        @Html.ValidationMessageFor(model => model.QuickCash, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Cash out" class="btn btn-default btn-lg btn-block" id="cashOut" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h3 class="text-danger">@ViewBag.Error</h3>
+                <p><br /></p>
+                @Html.ActionLink("Back", "Index", "Home")
+            </div>
+        </div>
+    }
+
+</div>

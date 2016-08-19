@@ -1,0 +1,77 @@
+﻿@model ATM.Models.CheckingAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CheckingAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd id="balance">
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back", "Index", "Home")
+</p>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $('#balance:contains("$0.00")').css('color', 'red');
+            
+            var bal = $('#balance').text();
+            var number = Number(bal.replace(/[^0-9\.]+/g, ""));
+
+            if (number > 100) {
+                //$('#balance').css('color', 'green');
+                $('#balance').addClass('text-success');
+            }
+           
+
+        });
+    </script>
+}
+
